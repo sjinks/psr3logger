@@ -1,0 +1,21 @@
+language:
+  - php
+  - c
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+
+compiler:
+  - gcc
+  - clang
+
+before_script:
+  - (cd ext; phpize && ./configure CFLAGS="-O2 -g3 -Wall -Wextra -Wno-unused-parameter -Werror" --silent && make -j2 --silent && make install)
+
+script:
+  - .travis/run_php_tests.sh
+
+after_failure:
+  - .travis/after_failure.sh
