@@ -7,13 +7,13 @@ zend_class_entry *psr_log_loggerawaretrait_ce;
 
 static PHP_METHOD(Psr_Log_LoggerAwareTrait, setLogger)
 {
-	zval **logger;
+	zval *logger;
 
-	if (FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "Z", &logger)) {
+	if (FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "z", &logger)) {
 		RETURN_NULL();
 	}
 
-	zend_update_property(psr_log_loggerawaretrait_ce, getThis(), ZEND_STRL("logger"), *logger TSRMLS_CC);
+	zend_update_property(psr_log_loggerawaretrait_ce, getThis(), ZEND_STRL("logger"), logger TSRMLS_CC);
 }
 
 static const zend_function_entry fe_psr_log_loggerawaretrait[] = {
