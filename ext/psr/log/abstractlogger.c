@@ -6,7 +6,6 @@ zend_class_entry *psr_log_abstractlogger_ce;
 
 static void psr_log_abstractlogger_log_helper(INTERNAL_FUNCTION_PARAMETERS, const char *lvl)
 {
-RETURN_FALSE;
 #if PHP_MAJOR_VERSION >= 7
 	zval z_context;
 	zval z_level;
