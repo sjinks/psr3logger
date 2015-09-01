@@ -59,6 +59,7 @@ static void psr_log_abstractlogger_log_helper(INTERNAL_FUNCTION_PARAMETERS, cons
 #if PHP_MAJOR_VERSION >= 7
 	ZVAL_UNDEF(&fci.function_name);
 	fci.object         = Z_OBJ_P(getThis());
+	fci.retval         = &retval;
 #else
 	fci.function_name  = &function_name;
 	fci.object_ptr     = getThis();
