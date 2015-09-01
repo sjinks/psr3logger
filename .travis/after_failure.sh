@@ -1,7 +1,6 @@
 #!/bin/bash
 
 shopt -s nullglob
-sudo apt-get -qq install gdb
 
 export LC_ALL=C
 for i in core core.*; do

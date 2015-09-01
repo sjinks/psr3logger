@@ -5,6 +5,7 @@ DIR=$(readlink -enq "$(dirname $0)/../ext/")
 shopt -s nullglob
 export NO_INTERACTION=1
 export REPORT_EXIT_STATUS=1
+export TEST_PHP_ARGS=-m
 make -C "$DIR" test
 for i in $DIR/tests/*.log; do
 	echo "====== $i ======";

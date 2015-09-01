@@ -11,6 +11,12 @@ php:
 
 sudo: false
 
+addons:
+  apt:
+    packages:
+    - valgrind
+    - gdb
+
 compiler:
   - gcc
   - clang
