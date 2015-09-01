@@ -56,36 +56,6 @@ static void psr_log_abstractlogger_log_helper(INTERNAL_FUNCTION_PARAMETERS, cons
 	params[2] = z_context;
 #endif
 
-
-#if PHP_MAJOR_VERSION >= 7
-	{
-		zval func, retval;
-		ZVAL_STRING(&func, "log");
-		ZVAL_UNDEF(&retval);
-		call_user_function(&ce->function_table, getThis(), &func, &retval, 3, params TSRMLS_CC);
-		zval_ptr_dtor(&func);
-		zval_ptr_dtor(&retval);
-	}
-#else
-	{
-		zval* params[3] = {level,message,context};
-		zval* func;
-		zval* retval;
-		ALLOC_INIT_ZVAL(retval);
-		MAKE_STD_ZVAL(func);
-		ZVAL_STRING(func, "log", 1);
-		call_user_function(&ce->function_table, &(getThis()), func, retval, 3, params TSRMLS_CC);
-		zval_ptr_dtor(&func);
-		zval_ptr_dtor(&retval);
-	}
-#endif
-
-	return;
-
-
-
-
-
 	fci.size           = sizeof(fci);
 	fci.function_table = &ce->function_table;
 #if PHP_MAJOR_VERSION >= 7
@@ -178,13 +148,13 @@ PHP_FUNCTION(Psr_Log_Debug)
 
 static const zend_function_entry fe_psr_log_abstractlogger[] = {
 	PHP_ME_MAPPING(emergency, Psr_Log_Emergency, arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
-	PHP_ME_MAPPING(alert, Psr_Log_Alert, arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
-	PHP_ME_MAPPING(critical, Psr_Log_Critical, arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
-	PHP_ME_MAPPING(error, Psr_Log_Error, arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
-	PHP_ME_MAPPING(warning, Psr_Log_Warning, arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
-	PHP_ME_MAPPING(notice, Psr_Log_Notice, arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
-	PHP_ME_MAPPING(info, Psr_Log_Info, arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
-	PHP_ME_MAPPING(debug, Psr_Log_Debug, arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
+	PHP_ME_MAPPING(alert,     Psr_Log_Alert,     arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
+	PHP_ME_MAPPING(critical,  Psr_Log_Critical,  arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
+	PHP_ME_MAPPING(error,     Psr_Log_Error,     arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
+	PHP_ME_MAPPING(warning,   Psr_Log_Warning,   arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
+	PHP_ME_MAPPING(notice,    Psr_Log_Notice,    arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
+	PHP_ME_MAPPING(info,      Psr_Log_Info,      arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
+	PHP_ME_MAPPING(debug,     Psr_Log_Debug,     arginfo_psr_log_loggerinterface_logspecialized, ZEND_ACC_PUBLIC)
 	PHP_FE_END
 };
 
