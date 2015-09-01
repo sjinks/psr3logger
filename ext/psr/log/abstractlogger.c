@@ -59,19 +59,24 @@ static void psr_log_abstractlogger_log_helper(INTERNAL_FUNCTION_PARAMETERS, cons
 
 #if PHP_MAJOR_VERSION >= 7
 	{
-		zval func;
+		zval func, retval;
 		ZVAL_STRING(&func, "log");
-		call_user_function(&ce->function_table, getThis(), &func, NULL, 3, params TSRMLS_CC);
+		ZVAL_UNDEF(&retval);
+		call_user_function(&ce->function_table, getThis(), &func, &retval, 3, params TSRMLS_CC);
 		zval_ptr_dtor(&func);
+		zval_ptr_dtor(&retval);
 	}
 #else
 	{
 		zval* params[3] = {level,message,context};
 		zval* func;
+		zval* retval;
+		ALLOC_INIT_ZVAL(retval);
 		MAKE_STD_ZVAL(func);
 		ZVAL_STRING(func, "log", 1);
-		call_user_function(&ce->function_table, &(getThis()), func, NULL, 3, params TSRMLS_CC);
+		call_user_function(&ce->function_table, &(getThis()), func, retval, 3, params TSRMLS_CC);
 		zval_ptr_dtor(&func);
+		zval_ptr_dtor(&retval);
 	}
 #endif
 
