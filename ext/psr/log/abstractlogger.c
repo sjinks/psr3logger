@@ -65,7 +65,7 @@ static void psr_log_abstractlogger_log_helper(INTERNAL_FUNCTION_PARAMETERS, cons
 		zval* func;
 		MAKE_STD_ZVAL(func);
 		ZVAL_STRING(func, "log", 1);
-		call_user_function(&ce->function_table, &(getThis()), &func, NULL, 3, params TSRMLS_CC);
+		call_user_function(&ce->function_table, &(getThis()), func, NULL, 3, params TSRMLS_CC);
 		zval_ptr_dtor(&func);
 	}
 #endif

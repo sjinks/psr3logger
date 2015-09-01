@@ -26,7 +26,7 @@ int init_Psr_Log_LoggerTrait(TSRMLS_D)
 
 	psr_log_loggertrait_ce = zend_register_internal_class(&ce TSRMLS_CC);
 	if (EXPECTED(psr_log_loggertrait_ce != NULL)) {
-		psr_log_loggertrait_ce->ce_flags |= ZEND_ACC_TRAIT);
+		psr_log_loggertrait_ce->ce_flags |= ZEND_ACC_TRAIT;
 		return SUCCESS;
 	}
 
