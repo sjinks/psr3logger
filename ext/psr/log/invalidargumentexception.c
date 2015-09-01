@@ -3,7 +3,7 @@
 #include <Zend/zend_exceptions.h>
 #include <ext/spl/spl_exceptions.h>
 
-zend_class_entry *psr_log_invalidargumentexception_ce;
+zend_class_entry* psr_log_invalidargumentexception_ce;
 
 int init_Psr_Log_InvalidArgumentException(TSRMLS_D)
 {

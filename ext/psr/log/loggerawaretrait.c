@@ -1,13 +1,13 @@
 #include "psr/log/loggerawaretrait.h"
 #include "psr/log/loggerawareinterface.h"
 
-zend_class_entry *psr_log_loggerawaretrait_ce;
+zend_class_entry* psr_log_loggerawaretrait_ce;
 
 #if PHP_VERSION_ID >= 50400
 
 static PHP_METHOD(Psr_Log_LoggerAwareTrait, setLogger)
 {
-	zval *logger;
+	zval* logger;
 
 	if (FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "z", &logger)) {
 		RETURN_NULL();

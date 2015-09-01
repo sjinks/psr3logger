@@ -2,7 +2,7 @@
 #include "psr/log/loggerinterface.h"
 #include "psr/log/loglevel.h"
 
-zend_class_entry *psr_log_abstractlogger_ce;
+zend_class_entry* psr_log_abstractlogger_ce;
 
 static void psr_log_abstractlogger_log_helper(INTERNAL_FUNCTION_PARAMETERS, const char *lvl)
 {
@@ -10,18 +10,20 @@ static void psr_log_abstractlogger_log_helper(INTERNAL_FUNCTION_PARAMETERS, cons
 	zval z_context;
 	zval z_level;
 #endif
-	zval *level, *message, *context = NULL;
+	zval* level;
+	zval* message;
+	zval* context = NULL;
 #if PHP_MAJOR_VERSION >= 7
 	zval params[3];
 	zval retval;
 #else
-	zval **params[3] = { &level, &message, &context };
-	zval *retval = NULL;
+	zval** params[3] = { &level, &message, &context };
+	zval* retval = NULL;
 	zval function_name = zval_used_for_init;
 #endif
 	zend_fcall_info fci;
 	zend_fcall_info_cache fcic;
-	zend_class_entry *ce;
+	zend_class_entry* ce;
 
 	if (FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "z|z", &message, &context)) {
 		RETURN_NULL();

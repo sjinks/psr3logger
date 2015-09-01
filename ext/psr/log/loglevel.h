@@ -12,7 +12,7 @@
 #define PSR_LOG_LOGLEVEL_INFO         "info"
 #define PSR_LOG_LOGLEVEL_DEBUG        "debug"
 
-ZEND_DLEXPORT extern zend_class_entry *psr_log_loglevel_ce;
+ZEND_DLEXPORT extern zend_class_entry* psr_log_loglevel_ce;
 
 PSR3LOGGER_VISIBILITY_HIDDEN int init_Psr_Log_LogLevel(TSRMLS_D);
 

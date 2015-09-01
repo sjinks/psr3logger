@@ -3,7 +3,7 @@
 
 #include "php_psr3logger.h"
 
-ZEND_DLEXPORT extern zend_class_entry *psr_log_loggerinterface_ce;
+ZEND_DLEXPORT extern zend_class_entry* psr_log_loggerinterface_ce;
 
 PSR3LOGGER_VISIBILITY_HIDDEN int init_Psr_Log_LoggerInterface(TSRMLS_D);
 

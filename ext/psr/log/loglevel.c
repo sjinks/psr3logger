@@ -1,6 +1,6 @@
 #include "psr/log/loglevel.h"
 
-zend_class_entry *psr_log_loglevel_ce;
+zend_class_entry* psr_log_loglevel_ce;
 
 int init_Psr_Log_LogLevel(TSRMLS_D)
 {

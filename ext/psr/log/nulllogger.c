@@ -2,11 +2,13 @@
 #include "psr/log/abstractlogger.h"
 #include "psr/log/loggerinterface.h"
 
-zend_class_entry *psr_log_nulllogger_ce;
+zend_class_entry* psr_log_nulllogger_ce;
 
 static PHP_METHOD(Psr_Log_NullLogger, log)
 {
-	zval *level, *message, *context = NULL;
+	zval* level;
+	zval* message;
+	zval* context = NULL;
 
 	if (FAILURE == zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "zz|z!", &level, &message, &context)) {
 		RETURN_NULL();

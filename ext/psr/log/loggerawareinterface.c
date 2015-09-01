@@ -1,6 +1,6 @@
 #include "psr/log/loggerawareinterface.h"
 
-zend_class_entry *psr_log_loggerawareinterface_ce;
+zend_class_entry* psr_log_loggerawareinterface_ce;
 
 static const zend_function_entry fe_psr_log_loggerawareinterface[] = {
 	PHP_ABSTRACT_ME(Psr_Log_LoggerAwareInterface, setLogger, arginfo_psr_log_loggerawareinterface_setlogger)
