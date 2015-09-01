@@ -29,6 +29,12 @@ static void psr_log_abstractlogger_log_helper(INTERNAL_FUNCTION_PARAMETERS, cons
 		RETURN_NULL();
 	}
 
+#if PHP_MAJOR_VERSION >= 7
+	call_user_function()
+#else
+#endif
+
+
 	ce = Z_OBJCE_P(getThis());
 
 	if (!context) {
@@ -49,6 +55,30 @@ static void psr_log_abstractlogger_log_helper(INTERNAL_FUNCTION_PARAMETERS, cons
 	ZVAL_STRING(level, lvl, 1);
 #endif
 	Z_SET_REFCOUNT_P(level, 0);
+
+
+
+#if PHP_MAJOR_VERSION >= 7
+	{
+		zval func;
+		ZVAL_STRING(&func, "log");
+		call_user_function(&ce->function_table, getThis(), &func, NULL, params);
+		zval_ptr_dtor(func);
+	}
+#else
+	{
+		zval* params[3] = {level,message,context};
+		zval func;
+		ZVAL_STRING(&func, "log");
+		call_user_function(&ce->function_table, &(getThis()), &func, NULL, params);
+		zval_ptr_dtor(func);
+	}
+#endif
+
+	return;
+
+
+
 
 #if PHP_MAJOR_VERSION >= 7
 	params[0] = z_level;
