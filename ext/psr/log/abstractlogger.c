@@ -29,12 +29,6 @@ static void psr_log_abstractlogger_log_helper(INTERNAL_FUNCTION_PARAMETERS, cons
 		RETURN_NULL();
 	}
 
-#if PHP_MAJOR_VERSION >= 7
-	call_user_function()
-#else
-#endif
-
-
 	ce = Z_OBJCE_P(getThis());
 
 	if (!context) {
@@ -62,16 +56,17 @@ static void psr_log_abstractlogger_log_helper(INTERNAL_FUNCTION_PARAMETERS, cons
 	{
 		zval func;
 		ZVAL_STRING(&func, "log");
-		call_user_function(&ce->function_table, getThis(), &func, NULL, params);
-		zval_ptr_dtor(func);
+		call_user_function(&ce->function_table, getThis(), &func, NULL, params TSRMLS_CC);
+		zval_ptr_dtor(&func);
 	}
 #else
 	{
 		zval* params[3] = {level,message,context};
-		zval func;
-		ZVAL_STRING(&func, "log");
-		call_user_function(&ce->function_table, &(getThis()), &func, NULL, params);
-		zval_ptr_dtor(func);
+		zval* func;
+		MAKE_STD_ZVAL(func);
+		ZVAL_STRING(func, "log", 1);
+		call_user_function(&ce->function_table, &(getThis()), &func, NULL, params TSRMLS_CC);
+		zval_ptr_dtor(&func);
 	}
 #endif
 
