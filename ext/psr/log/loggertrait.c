@@ -2,7 +2,7 @@
 #include "psr/log/abstractlogger.h"
 #include "psr/log/loggerinterface.h"
 
-zend_class_entry *psr_log_loggertrait_ce;
+zend_class_entry* psr_log_loggertrait_ce;
 
 #if PHP_VERSION_ID >= 50400
 
@@ -26,7 +26,7 @@ int init_Psr_Log_LoggerTrait(TSRMLS_D)
 
 	psr_log_loggertrait_ce = zend_register_internal_class(&ce TSRMLS_CC);
 	if (EXPECTED(psr_log_loggertrait_ce != NULL)) {
-		psr_log_loggertrait_ce->ce_flags |= ZEND_ACC_TRAIT;
+		psr_log_loggertrait_ce->ce_flags |= (ZEND_ACC_TRAIT | ZEND_ACC_EXPLICIT_ABSTRACT_CLASS);
 		return SUCCESS;
 	}
 
