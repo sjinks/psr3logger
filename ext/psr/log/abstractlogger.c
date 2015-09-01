@@ -93,12 +93,13 @@ static void psr_log_abstractlogger_log_helper(INTERNAL_FUNCTION_PARAMETERS, cons
 
 	zend_call_function(&fci, &fcic TSRMLS_CC);
 
+#if PHP_MAJOR_VERSION >= 7
+	zval_ptr_dtor(&retval);
+	zval_ptr_dtor(&fci.function_name);
+#else
 	if (retval) {
 		zval_ptr_dtor(&retval);
 	}
-
-#if PHP_MAJOR_VERSION >= 7
-	zval_ptr_dtor(&fci.function_name);
 #endif
 }
 
