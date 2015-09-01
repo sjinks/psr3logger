@@ -50,6 +50,11 @@ static void psr_log_abstractlogger_log_helper(INTERNAL_FUNCTION_PARAMETERS, cons
 #endif
 	Z_SET_REFCOUNT_P(level, 0);
 
+#if PHP_MAJOR_VERSION >= 7
+	params[0] = z_level;
+	params[1] = *message;
+	params[2] = z_context;
+#endif
 
 
 #if PHP_MAJOR_VERSION >= 7
@@ -75,11 +80,6 @@ static void psr_log_abstractlogger_log_helper(INTERNAL_FUNCTION_PARAMETERS, cons
 
 
 
-#if PHP_MAJOR_VERSION >= 7
-	params[0] = z_level;
-	params[1] = *message;
-	params[2] = z_context;
-#endif
 
 	fci.size           = sizeof(fci);
 	fci.function_table = &ce->function_table;
