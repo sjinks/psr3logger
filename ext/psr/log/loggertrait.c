@@ -8,42 +8,42 @@ zend_class_entry* psr_log_loggertrait_ce;
 
 static PHP_METHOD(Psr_Log_LoggerTrait, emergency)
 {
-	ZEND_FN(Psr_Log_Emergency)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+//	ZEND_FN(Psr_Log_Emergency)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
 static PHP_METHOD(Psr_Log_LoggerTrait, alert)
 {
-	ZEND_FN(Psr_Log_Alert)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+//	ZEND_FN(Psr_Log_Alert)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
 static PHP_METHOD(Psr_Log_LoggerTrait, critical)
 {
-	ZEND_FN(Psr_Log_Critical)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+//	ZEND_FN(Psr_Log_Critical)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
 static PHP_METHOD(Psr_Log_LoggerTrait, error)
 {
-	ZEND_FN(Psr_Log_Error)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+//	ZEND_FN(Psr_Log_Error)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
 static PHP_METHOD(Psr_Log_LoggerTrait, warning)
 {
-	ZEND_FN(Psr_Log_Warning)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+//	ZEND_FN(Psr_Log_Warning)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
 static PHP_METHOD(Psr_Log_LoggerTrait, notice)
 {
-	ZEND_FN(Psr_Log_Notice)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+//	ZEND_FN(Psr_Log_Notice)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
 static PHP_METHOD(Psr_Log_LoggerTrait, info)
 {
-	ZEND_FN(Psr_Log_Info)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+//	ZEND_FN(Psr_Log_Info)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
 static PHP_METHOD(Psr_Log_LoggerTrait, debug)
 {
-	ZEND_FN(Psr_Log_Debug)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
+//	ZEND_FN(Psr_Log_Debug)(INTERNAL_FUNCTION_PARAM_PASSTHRU);
 }
 
 static const zend_function_entry fe_psr_log_loggertrait[] = {
