@@ -23,6 +23,14 @@ int init_Psr_Log_NullLogger(TSRMLS_D)
 	zend_class_entry ce;
 	INIT_CLASS_ENTRY(ce, "Psr\\Log\\NullLogger", fe_psr_log_nulllogger);
 
-	psr_log_nulllogger_ce = zend_register_internal_class_ex(&ce, psr_log_abstractlogger_ce, NULL TSRMLS_CC);
+	psr_log_nulllogger_ce = zend_register_internal_class_ex(
+		&ce,
+		psr_log_abstractlogger_ce
+#if PHP_MAJOR_VERSION < 7
+		, NULL
+#endif
+		TSRMLS_CC
+	);
+
 	return (EXPECTED(psr_log_nulllogger_ce != NULL)) ? SUCCESS : FAILURE;
 }
